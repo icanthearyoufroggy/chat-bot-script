@@ -10,6 +10,15 @@ local language = "en"
 
 local censor = "True" -- censoring?
 
+local function noti(title,desc,icon,dur)
+	game.StarterGui:SetCore("SendNotification",  {
+		Title = title;
+		Text = desc;
+		Icon = icon;
+		Duration = dur;
+	})
+end
+
 local function changebooth()
 	local ohString1 = "Update"
 	local ohTable2 = {
@@ -26,7 +35,10 @@ local function msg(message, play)
 	local text = message
 	local respond = game:HttpGet("https://api.simsimi.net/v2/?text="..text.."&lc="..language.."&cf="..censor)
 	local idk = HttpService:JSONDecode(respond)
-	print(idk)
+	local uncensoredresponse = game:HttpGet("https://api.simsimi.net/v2/?text="..text.."&lc="..language.."&cf=".."False")
+	local idk2 = HttpService:JSONDecode(uncensoredresponse)
+	print(idk2.success)
+	noti("uncensored bot chat",idk2.success,"rbxassetid://2414705783",0.7)
 
 	wait()
 
