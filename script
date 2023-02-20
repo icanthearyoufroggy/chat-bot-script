@@ -26,6 +26,7 @@ local function msg(message, play)
 	local text = message
 	local respond = game:HttpGet("https://api.simsimi.net/v2/?text="..text.."&lc="..language.."&cf="..censor)
 	local idk = HttpService:JSONDecode(respond)
+	print(idk)
 
 	wait()
 
