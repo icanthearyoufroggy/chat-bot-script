@@ -29,8 +29,6 @@ local function changebooth()
 	game:GetService("ReplicatedStorage").CustomiseBooth:FireServer(ohString1, ohTable2)
 end
 
-changebooth()
-
 local function msg(message, play)
 	local text = message
 	local respond = game:HttpGet("https://api.simsimi.net/v2/?text="..text.."&lc="..language.."&cf="..censor)
@@ -60,3 +58,7 @@ Players.PlayerChatted:Connect(function(type, plr, msgg)
 		end
 	end
 end)
+
+while wait() do
+	changebooth()
+end
